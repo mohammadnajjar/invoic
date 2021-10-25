@@ -7,6 +7,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
 use App\Models\InvoicesDetail;
 use App\Models\Section;
+use App\Models\User;
 use App\Notifications\InvoiceAdd;
 use Excel;
 use Illuminate\Http\Request;

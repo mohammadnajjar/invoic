@@ -7,7 +7,6 @@ use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
 use App\Models\InvoicesDetail;
 use App\Models\Section;
-use App\Models\User;
 use App\Notifications\InvoiceAdd;
 use Excel;
 use Illuminate\Http\Request;
@@ -17,6 +16,23 @@ use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:قائمة الفواتير|اضافة فاتورة|تعديل الفاتورة|حذف الفاتورة|تغير حالة الدفع', ['only' => ['index',
+            'store']]);
+        $this->middleware('permission:اضافة فاتورة', ['only' => ['create', 'store']]);
+        $this->middleware('permission:تعديل الفاتورة', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:حذف الفاتورة|ارشفة الفاتورة', ['only' => ['destroy']]);
+        $this->middleware('permission:ارشيف الفواتير', ['only' => ['getArchive']]);
+        $this->middleware('permission:الفواتير الغير مدفوعة', ['only' => ['getUnpaid']]);
+        $this->middleware('permission:الفواتير المدفوعة', ['only' => ['getPaid']]);
+        $this->middleware('permission:الفواتير المدفوعة جزئيا', ['only' => ['getPartial']]);
+        $this->middleware('permission:تغير حالة الدفع', ['only' => ['statusUpdate']]);
+        $this->middleware('permission:طباعةالفاتورة', ['only' => ['print']]);
+        $this->middleware('permission:تصدير EXCEL', ['only' => ['export']]);
+
+    }
+
     public function index()
     {
 //         return "hi";

@@ -56,11 +56,11 @@
                             <li><a class="slide-item" href="{{ route('invoices.unpaid') }}">الفواتير الغير مدفوعة</a>
                             </li>
                         @endcan
-                        @can('الفواتيرالمدفوعة جزئيا')
+                        @can('الفواتير المدفوعة جزئيا')
                             <li><a class="slide-item" href="{{ route('invoices.partial') }}">الفواتيرالمدفوعة جزئيا</a>
 
                         @endcan
-                        @can('الفواتير المؤرشفة')
+                        @can('ارشيف الفواتير')
                             <li><a class="slide-item" href="{{ route('invoices.archive') }}">الفواتير المؤرشفة</a></li>
                         @endcan
                     </ul>

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Storage;
 
 class InvoicesDetailController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:اضافة مرفق|حذف المرفق', ['only' => ['index', 'store']]);
+        $this->middleware('permission:اضافة مرفق', ['only' => ['create', 'store']]);
+        $this->middleware('permission:حذف المرفق', ['only' => ['destroy']]);
+    }
 
     public function index()
     {

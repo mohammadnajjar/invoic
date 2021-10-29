@@ -125,6 +125,7 @@
                                 <select name="Rate_VAT" id="Rate_VAT" class="form-control" onchange="mySum()">
                                     <!--placeholder-->
                                     <option value="" disabled selected>حدد نسبة الضريبة</option>
+                                    <option value=" 0%">0%</option>
                                     <option value="5%">5%</option>
                                     <option value="10%">10%</option>
                                 </select>

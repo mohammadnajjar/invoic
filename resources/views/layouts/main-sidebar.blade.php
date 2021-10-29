@@ -2,14 +2,16 @@
 <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
 <aside class="app-sidebar sidebar-scroll">
     <div class="main-sidebar-header active">
-        <a class="desktop-logo logo-light active" href="{{ url('/' . $page='index') }}"><img
-                    src="{{URL::asset('assets/img/brand/logo.png')}}" class="main-logo" alt="logo"></a>
-        <a class="desktop-logo logo-dark active" href="{{ url('/' . $page='index') }}"><img
-                    src="{{URL::asset('assets/img/brand/logo-white.png')}}" class="main-logo dark-theme" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-light active" href="{{ url('/' . $page='index') }}"><img
-                    src="{{URL::asset('assets/img/brand/favicon.png')}}" class="logo-icon" alt="logo"></a>
-        <a class="logo-icon mobile-logo icon-dark active" href="{{ url('/' . $page='index') }}"><img
-                    src="{{URL::asset('assets/img/brand/favicon-white.png')}}" class="logo-icon dark-theme" alt="logo"></a>
+        <a href="{{ url('/' . $page='Home') }}"><img
+                    src="{{URL::asset('assets/img/brand/favicon.png')}}"
+                    class="sign-favicon ht-40" alt="logo"></a>
+        <h2 class="main-logo1 ml-1 mr-0 my-auto tx-28">MGLN<span>a</span>J</h2></div>
+    <a class="desktop-logo logo-dark active" href="{{ url('/' . $page='index') }}"><img
+                src="{{URL::asset('assets/img/brand/logo-white.png')}}" class="main-logo dark-theme" alt="logo"></a>
+    <a class="logo-icon mobile-logo icon-light active" href="{{ url('/' . $page='index') }}"><img
+                src="{{URL::asset('assets/img/brand/favicon.png')}}" class="logo-icon" alt="logo"></a>
+    <a class="logo-icon mobile-logo icon-dark active" href="{{ url('/' . $page='index') }}"><img
+                src="{{URL::asset('assets/img/brand/favicon-white.png')}}" class="logo-icon dark-theme" alt="logo"></a>
     </div>
     <div class="main-sidemenu">
         <div class="app-sidebar__user clearfix">
@@ -78,11 +80,13 @@
                         <span class="side-menu__label">التقارير</span><i class="angle fe fe-chevron-down"></i></a>
                     <ul class="slide-menu">
                         @can('التقارير')
-                            <li><a class="slide-item" href="{{ url('/' . $page='cards') }}">تقارير الفواتير</a></li>
+                            <li><a class="slide-item" href="{{ url('/' . $page='invoices_report') }}">تقارير
+                                    الفواتير</a></li>
                         @endcan
                         @can('التقارير')
 
-                            <li><a class="slide-item" href="{{ url('/' . $page='darggablecards') }}">تقارير العملاء</a>
+                            <li><a class="slide-item" href="{{ url('/' . $page='customers_report') }}">تقارير
+                                    العملاء</a>
                             </li>
                         @endcan
                     </ul>

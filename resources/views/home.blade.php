@@ -94,7 +94,7 @@
                                                          echo $count_invoices1 = 0;
                                                      }
                                                      else{
-                                                       echo $count_invoices1 = $count_invoices1 / $count_all *100;
+                                                       echo Round($count_invoices1 = $count_invoices1 / $count_all *100) ;
                                                      }
                                                  @endphp%
                                                </span>
@@ -133,7 +133,7 @@
                                                         echo $count_invoices1 = 0;
                                                     }
                                                     else{
-                                                      echo $count_invoices1 = $count_invoices1 / $count_all *100;
+                                                      echo Round($count_invoices1 = $count_invoices1 / $count_all *100);
                                                     }
                                                 @endphp%</span>
 										</span>
@@ -171,7 +171,7 @@
                                                         echo $count_invoices1 = 0;
                                                     }
                                                     else{
-                                                      echo $count_invoices1 = $count_invoices1 / $count_all *100;
+                                                      echo Round($count_invoices1 = $count_invoices1 / $count_all *100);
                                                     }
                                                 @endphp%</span>
 										</span>

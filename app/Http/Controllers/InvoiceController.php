@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Exports\InvoicesExport;
+use App\Http\Requests\InvoicesRequest;
 use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
 use App\Models\InvoicesDetail;
 use App\Models\Section;
+use App\Models\User;
+use App\Notifications\Add_Invoice_new;
 use App\Notifications\InvoiceAdd;
 use Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class InvoiceController extends Controller
@@ -81,7 +85,7 @@ class InvoiceController extends Controller
         return view('invoices.add_invoice', compact('sections'));
     }
 
-    public function store(Request $request)
+    public function store(InvoicesRequest $request)
     {
 
 //        return $request;
@@ -129,8 +133,12 @@ class InvoiceController extends Controller
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
         $invoice = Invoice::latest()->first();
-        $user = Auth::user();
-        $user->notify(new InvoiceAdd($invoice));
+        $user = User::get();
+        Notification::sendNow($user, new Add_Invoice_new($invoice));
+        Notification::sendNow($user, new InvoiceAdd($invoice));
+
+//        $user->notify(new Add_Invoice_new($invoice));
+//        $user->notify(new InvoiceAdd($invoice));
 
 
         return redirect()->route('invoices.index')->with('Add', 'تم اضافة الفاتورة بنجاح');
@@ -254,4 +262,18 @@ class InvoiceController extends Controller
     {
         return Excel::download(new InvoicesExport, 'invoices.xlsx');
     }
+
+    public function MarkAsRead_all(Request $request)
+    {
+
+        $userUnreadNotification = auth()->user()->unreadNotifications;
+
+        if ($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+            return back();
+        }
+
+
+    }
+
 }

@@ -61,6 +61,14 @@ Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailController::c
 Route::get('View_file/{invoice_number}/{file_name}', [InvoicesDetailController::class, 'open_file']);
 Route::post('delete_file', [InvoicesDetailController::class, 'destroy'])->name('delete_file');
 Route::resource('/invoicesdetails', InvoicesDetailController::class);
+
+Route::get('MarkAsRead_all', [InvoiceController::class, 'MarkAsRead_all'])->name('MarkAsRead_all');
+
+//Route::get('unreadNotifications_count', [InvoiceController::class, 'unreadNotifications_count'])->name('unreadNotifications_count');
+//
+//Route::get('unreadNotifications', [InvoiceController::class, 'unreadNotifications'])->name('unreadNotifications');
+
+
 Route::get('/{page}', [AdminController::class, 'index']);
 Route::resource('/hi', hiController::class);
 
